@@ -79,13 +79,13 @@
                                         <td>{{ $spt->bookie_name }}</td>
                                         <td>{{ $spt->max_cap }}</td>
                                         <td>{{ $spt->spaces }}</td>
-                                        <td>
+                                        {{-- <td>
                                           
                                             <button>
                                                 <a href="{{ '/hotels/' . $spt->name . '/edit' }}">BOOK</a>
                                             </button>
                                             
-                                        </td>
+                                        </td> --}}
                                     </tr>
                                 @endforeach
                             </tbody>

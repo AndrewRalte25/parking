@@ -14,6 +14,7 @@ class spot extends Model
         'name',
         'location',
         'bookie_name',
+        'bookie_id',
         'max_cap',
         'spaces',
         

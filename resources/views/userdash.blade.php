@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
+            {{ __('User Dashboard') }}
         </h2>
     </x-slot>
     <div class="container-fluid">
@@ -20,11 +20,7 @@
                                PARKING SPOTS
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/qrgen">
-                               GENERATE QR
-                            </a>
-                        </li>
+                       
                     
                         <!-- Add more sidebar links as needed -->
                     </ul>

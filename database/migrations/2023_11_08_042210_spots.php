@@ -16,8 +16,9 @@ return new class extends Migration
             $table->string('name');
             $table->string('location');
             $table->string('bookie_name');
-            $table->string('max_cap');
-            $table->string('spaces');
+            $table->string('bookie_id');
+            $table->integer('max_cap');
+            $table->integer('spaces');
            
         });
     }

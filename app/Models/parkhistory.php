@@ -11,10 +11,12 @@ class parkhistory extends Model
 
     public $timestamps = false;
     protected $fillable = [
-        'name',
+        'user_name',
+        'user_id',
         'spot_name',
         'location',
         'bookie_id',
+        'registration',
         
         
     ];

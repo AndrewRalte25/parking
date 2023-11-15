@@ -29,10 +29,10 @@
                                     </div>
     
                                     <div class="mb-3">
-                                        <label for="bookieIdInput" class="form-label">Bookie NAME</label>
+                                        <label for="bookieIdInput" class="form-label">Assign Bookie</label>
                                         <select name="bookie_name" class="form-select" id="bookieIdInput" aria-describedby="bookieIdHelp">
                                             @foreach ($users as $user)
-                                                <option value="{{ $user->name }}">{{ $user->name }}</option>
+                                                <option value="{{ $user->name }}" data-user-id="{{ $user->id }}">{{ $user->name }}</option>
                                             @endforeach
                                         </select>
                                         @error('bookie_name')
@@ -40,13 +40,27 @@
                                         @enderror
                                     </div>
                                     <div class="mb-3">
+                                        <label for="bookieUserIdDisplay" class="form-label">Selected Bookie's ID</label>
+                                        <input type="text" id="bookieUserIdDisplay" name="bookie_id" readonly>
+                                    </div>
+                                    <script>
+                                        // Add a script to update the display field when a bookie is selected
+                                        document.getElementById('bookieIdInput').addEventListener('change', function() {
+                                            var selectedOption = this.options[this.selectedIndex];
+                                            var bookieUserIdDisplay = document.getElementById('bookieUserIdDisplay');
+                                            bookieUserIdDisplay.value = selectedOption.dataset.userId;
+                                        });
+                                    </script>
+
+
+                                    <div class="mb-3">
                                         <label for="contactInput" class="form-label">MAX CAPACITY</label>
                                         <input name="max_cap" value="{{ old('date') }}" type="text" class="form-control" id="contactInput" aria-describedby="contactHelp">
                                         @error('Contact')
                                             <small class="text-danger">{{ $message }}</small>
                                         @enderror
                                     </div>
-    
+                                    
                                    
     
                                     <button type="submit" class="btn btn-dark">Submit</button>

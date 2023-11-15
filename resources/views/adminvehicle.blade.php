@@ -36,7 +36,7 @@
             </nav>
             
             <div id="page-content-wrapper" class="col-md-11">
-                <a class="btn btn-dark m-3" href="/adminaddspot" role="button">ADD PARKING SPOT</a>
+               
                 
                 <!-- Search Input -->
                 <div class="mb-3">
@@ -50,34 +50,26 @@
                             <thead class="thead-dark">
                                 <tr>
                                     <th>ID</th>
-                                    <th>NAME</th>
-                                    <th>LOCATION</th>
-                                    <th>BOOKIE NAME</th>
-                                    <th>BOOKIE ID</th>
-                                    <th>MAX CAPACITY</th>
-                                    <th>FREE SPACE</th>
+                                    <th>REGISTRATION</th>
+                                    <th>TYPE</th>
+                                    <th>OWNER ID</th>
                                     <th>ACTIONS</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($spot as $spt)
+                                @foreach ($vehicle as $spt)
                                     <tr>
                                         <td>{{ $spt->id }}</td>
-                                        <td>{{ $spt->name }}</td>
-                                        <td>{{ $spt->location }}</td>
-                                        <td>{{ $spt->bookie_name }}</td>
-                                        <td>{{ $spt->bookie_id }}</td>
-                                        <td>{{ $spt->max_cap }}</td>
-                                        <td>{{ $spt->spaces }}</td>
+                                        <td>{{ $spt->registration }}</td>
+                                        <td>{{ $spt->type }}</td>
+                                        <td>{{ $spt->owner_id }}</td>
+                                       
                                         <td>
-                                            <form action="{{ url('/adminspot/' . $spt->id) }}" method="post">
+                                            <form action="{{ url('/adminvehicle/' . $spt->id) }}" method="post">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit"><i class="bi bi-trash3-fill"></i></button>
                                             </form>
-                                            <button>
-                                                <a href="{{ url('/adminspot/' . $spt->id . '/edit') }}">EDIT</a>
-                                            </button>
                                            
                                         </td>
                                     </tr>

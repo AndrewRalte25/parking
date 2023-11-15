@@ -11,12 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('parkinghistory', function (Blueprint $table) {
+        Schema::create('parkhistories', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('user_id')->unique();
+            $table->string('user_name');
+            $table->string('user_id');
             $table->string('spot_name');
             $table->string('location');
+            $table->string('registration');
             $table->string('bookie_id');
             $table->enum('status', ['checked-in', 'checked-out'])->default('checked-in');
           

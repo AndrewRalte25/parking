@@ -4,9 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use BaconQrCode\Renderer\ImageRenderer;
-use BaconQrCode\Renderer\Image\SvgImageBackEnd;
+use BaconQrCode\Renderer\Image\ImagickImageBackEnd;
 use BaconQrCode\Renderer\RendererStyle\RendererStyle;
-
 use BaconQrCode\Writer;
 
 use App\Models\Vehicle; // Ensure that the model class name is correctly capitalized
@@ -23,13 +22,18 @@ class QrController extends Controller
     $registration = $request->input('registration');
     
     // Create a QR code content string with the required information
-    $qrCodeContent = "User ID: $userId\nUser Name: $userName\nRegistration: $registration";
-    dd($qrCodeContent);
+    $qrCodeData = [
+        'user_id' => $userId,
+        'user_name' => $userName,
+        'registration' => $registration,
+    ];
+
+    $qrCodeContent = json_encode($qrCodeData);
 
     // Set up the QR code renderer and style
     $renderer = new ImageRenderer(
         new RendererStyle(400),
-        new SvgImageBackEnd()
+        new ImagickImageBackEnd()
     );
 
     // Create a QR code writer
@@ -37,7 +41,7 @@ class QrController extends Controller
 
     // Generate the QR code as an image
     $image = $writer->writeString($qrCodeContent);
-
+    // return response($image)->header('Content-Type', 'image/png');
     return view('qrshow', ['image' => $image]);
 }
 

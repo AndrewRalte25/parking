@@ -6,8 +6,8 @@
     </x-slot>
     <div class="container-fluid">
         <div class="row">
-            <!-- Sidebar (Reduced width to half) -->
-            <nav id="sidebar" class="col-md-1 d-md-block bg-light text-white sidebar">
+            <!-- Sidebar -->
+            <nav id="sidebar" class="col-md-2 col-lg-1 d-md-block bg-light text-white sidebar">
                 <div class="position-sticky" style="height: 100vh;">
                     <ul class="nav flex-column">
                         <li class="nav-item">
@@ -21,19 +21,22 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                Page 2
+                            <a class="nav-link" href="/adminvehicles">
+                               VEHICLES
                             </a>
                         </li>
-                        <!-- Add more sidebar links as needed -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="/adminhistory">
+                               HISTORY
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </nav>
             
-          
+           
         </div>
     </div>
-   
 </x-app-layout>
 
 <style>

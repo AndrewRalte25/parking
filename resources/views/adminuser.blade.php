@@ -8,7 +8,7 @@
     <div class="container-fluid">
         <div class="row">
             <!-- Sidebar (Reduced width to half) -->
-            <nav id="sidebar" class="col-md-1 d-md-block bg-light text-white sidebar">
+            <nav id="sidebar" class="col-md-2 col-lg-1 d-md-block bg-light text-white sidebar">
                 <div class="position-sticky" style="height: 100vh;">
                     <ul class="nav flex-column">
                         <li class="nav-item">
@@ -18,21 +18,32 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/adminparking">
-                                PARKING SPOTS
+                               PARKING SPOTS
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class "nav-link" href="#">
-                                Page 2
+                            <a class="nav-link" href="/adminvehicles">
+                               VEHICLES
                             </a>
                         </li>
-                        <!-- Add more sidebar links as needed -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="/adminhistory">
+                               HISTORY
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </nav>
             
             <div id="page-content-wrapper" class="col-md-11">
-                <a class="btn btn-dark m-3" href="/adminaddspot" role="button">ADD NEW USER</a>
+                <a class="btn btn-dark m-3" href="/adminadduser" role="button">ADD NEW USER</a>
+                
+                <!-- Search Input -->
+                <div class="mb-3">
+                    <label for="searchInput" class="form-label">Search:</label>
+                    <input type="text" class="form-control" id="searchInput" placeholder="Type to search...">
+                </div>
+                
                 <div class="container">
                     <div class="table-responsive">
                         <table class="table table-bordered text-center">
@@ -42,7 +53,7 @@
                                     <th>NAME</th>
                                     <th>EMAIL</th>
                                     <th>ROLE</th>
-                                 
+                                    <th>ACTIONS</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -52,19 +63,12 @@
                                         <td>{{ $spt->name }}</td>
                                         <td>{{ $spt->email }}</td>
                                         <td>{{ $spt->role }}</td>
-                                
                                         <td>
-                                            <form action="{{ '/hotels/' . $spt->name }}" method="post">
+                                            <form action="{{ url('/adminuser/' . $spt->id) }}" method="post">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit"><i class="bi bi-trash3-fill"></i></button>
                                             </form>
-                                            <button>
-                                                <a href="{{ '/hotels/' . $spt->name . '/edit' }}">EDIT</a>
-                                            </button>
-                                            <button>
-                                                <a href="{{ '/hotels/' . $spt->name }}/addroom">VIEW PARKED VEHICLES</a>
-                                            </button>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -75,4 +79,19 @@
             </div>
         </div>
     </div>
+
+    <!-- jQuery Library -->
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+
+    <!-- jQuery for Filtering -->
+    <script>
+        $(document).ready(function () {
+            $('#searchInput').on('keyup', function () {
+                const value = $(this).val().toLowerCase();
+                $('table tbody tr').filter(function () {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+                });
+            });
+        });
+    </script>
 </x-app-layout>

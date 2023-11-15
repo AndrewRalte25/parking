@@ -5,7 +5,7 @@
         </h2>
     </x-slot>
 
-
+ 
    
      <!-- Check-In Button -->
      <a href="/checkin" class="btn btn-primary">Check-In</a>
