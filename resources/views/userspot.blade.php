@@ -4,7 +4,7 @@
             {{ __('PARKING SPOTS') }}
         </h2>
     </x-slot>
-    
+
     <div class="container-fluid">
         <div class="row">
             <!-- Sidebar (Reduced width to half) -->
@@ -18,16 +18,14 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/userspot">
-                               PARKING SPOTS
+                                PARKING SPOTS
                             </a>
                         </li>
-                        
-                    
                         <!-- Add more sidebar links as needed -->
                     </ul>
                 </div>
             </nav>
-            
+
             <div id="page-content-wrapper" class="col-md-11">
                 <div class="mb-3" style="width: 50%; display: flex; align-items: center; justify-content: space-between;">
                     <div>
@@ -38,31 +36,37 @@
                             @endforeach
                         </select>
                     </div>
-                    
+
                     <div class="mt-3">
                         <a id="generateQRButton" class="btn btn-dark" role="button">GENERATE QR</a>
                     </div>
                     <script>
                         // Add a click event listener to the "GENERATE QR" button
-                        document.getElementById('generateQRButton').addEventListener('click', function() {
+                        document.getElementById('generateQRButton').addEventListener('click', function () {
                             // Get the selected vehicle's registration from the dropdown
                             var selectedRegistration = document.getElementById('vehicleSelect').value;
-                    
+
                             // Create the URL with the selected registration as a query parameter
                             var qrGenURL = "/qrgen?registration=" + selectedRegistration;
-                    
+
                             // Navigate to the QR generation page with the selected registration
                             window.location.href = qrGenURL;
                         });
                     </script>
-                    
+
                 </div>
+                <!-- Search Input -->
+                <div class="mb-3">
+                    <label for="searchInput" class="form-label">Search:</label>
+                    <input type="text" class="form-control" id="searchInput" placeholder="Type to search...">
+                </div>
+
                 <div class="container">
                     <div class="table-responsive">
                         <table class="table table-bordered text-center">
                             <thead class="thead-dark">
                                 <tr>
-                                    <th>ID</th>
+                                    
                                     <th>NAME</th>
                                     <th>LOCATION</th>
                                     <th>BOOKIE NAME</th>
@@ -73,19 +77,22 @@
                             <tbody>
                                 @foreach ($spot as $spt)
                                     <tr>
-                                        <td>{{ $spt->id }}</td>
+                                     
                                         <td>{{ $spt->name }}</td>
                                         <td>{{ $spt->location }}</td>
                                         <td>{{ $spt->bookie_name }}</td>
                                         <td>{{ $spt->max_cap }}</td>
                                         <td>{{ $spt->spaces }}</td>
-                                        {{-- <td>
-                                          
+                                        <td>                                         
                                             <button>
                                                 <a href="{{ '/hotels/' . $spt->name . '/edit' }}">BOOK</a>
-                                            </button>
-                                            
-                                        </td> --}}
+                                            </button>     
+                                        </td>
+                                        <td>                                         
+                                            <button>
+                                                <a href="{{ '/hotels/' . $spt->name . '/edit' }}">GET DIRECTIONS</a>
+                                            </button>     
+                                        </td>
                                     </tr>
                                 @endforeach
                             </tbody>
