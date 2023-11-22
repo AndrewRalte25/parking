@@ -56,6 +56,7 @@
                                     <th>BOOKIE ID</th>
                                     <th>MAX CAPACITY</th>
                                     <th>FREE SPACE</th>
+                                    
                                     <th>ACTIONS</th>
                                 </tr>
                             </thead>
@@ -77,6 +78,12 @@
                                             </form>
                                             <button>
                                                 <a href="{{ url('/adminspot/' . $spt->id . '/edit') }}">EDIT</a>
+                                            </button>
+                                           
+                                        </td>
+                                        <td></form>
+                                            <button>
+                                                <a href="{{ url('/adminspot/' . $spt->id . '/view') }}">View parked vehicles</a>
                                             </button>
                                            
                                         </td>

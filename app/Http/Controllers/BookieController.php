@@ -58,6 +58,7 @@ class BookieController extends Controller
             $data->registration = $dataArray['registration'];
             $data->location = $request->spot_location;
             $data->spot_name = $request->spot_name;
+            $data->created_at = now();
             $data->bookie_id = auth()->user()->id;
     
             $data->save();

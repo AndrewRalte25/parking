@@ -56,6 +56,7 @@ Route::middleware(['auth', 'CheckRole:2'])->group(function () {
     Route::delete('/adminspot/{id}', [AdminController::class, 'spotdestroy']);
     Route::get('/adminspot/{id}/edit', [AdminController::class, 'edit']);
     Route::put('/adminupdatespot/{id}', [AdminController::class, 'update']);
+    Route::get('/adminspot/{id}/view', [AdminController::class, 'view']);
 });
 
 

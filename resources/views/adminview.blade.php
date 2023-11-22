@@ -74,7 +74,6 @@
                                         <td>{{ $spt->status }}</td>
                                         <td>{{ $spt->created_at }}</td>
                                        
-                                       
                                         <td>
                                             <form action="{{ url('/adminhistory/' . $spt->id) }}" method="post">
                                                 @csrf

@@ -35,6 +35,17 @@ class AdminController extends Controller
         $history = parkhistory::get();
         return view('adminhistory', compact('history'));
    }  
+   public function view($id)
+   {    
+        $spot = Spot::find($id);
+        // dd($spot);
+        $history = parkhistory::where('spot_name', $spot->name)
+        ->where('location', $spot->location)
+        ->where('status', 'checked-in')
+        ->get();
+        // dd($history);
+        return view('adminview', compact('history'));
+   }  
    public function edit($id)
    {    
         $spot = spot::find($id);
